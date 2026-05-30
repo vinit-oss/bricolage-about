@@ -652,6 +652,49 @@
     color: var(--ink-soft);
   }
 
+  /* ── GLOBAL RECOGNITION ────────────── */
+  .global-section { background: var(--white); }
+  .global-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+  }
+  .global-card {
+    border: 1px solid var(--line);
+    padding: 38px 32px;
+    background: var(--paper);
+    transition: transform 0.3s;
+  }
+  .global-card:hover { transform: translateY(-4px); }
+  .global-headline {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    border-bottom: 1px solid var(--red);
+    padding-bottom: 12px;
+    display: inline-block;
+  }
+  .global-project {
+    font-family: var(--sans);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+  .global-body {
+    color: var(--ink-soft);
+    line-height: 1.65;
+    font-size: 14.5px;
+  }
+  @media (max-width: 900px) {
+    .global-grid { grid-template-columns: 1fr; }
+  }
+
   /* ── PRESS ──────────────────────────── */
   .press-section { background: var(--white); }
   .press {
@@ -828,16 +871,16 @@
         <div class="stat-label">Founded</div>
       </div>
       <div>
-        <div class="stat-num">100k</div>
-        <div class="stat-label">sq ft &mdash; MuSo</div>
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Projects</div>
       </div>
       <div>
-        <div class="stat-num">100+</div>
-        <div class="stat-label">Cinemas Designed</div>
+        <div class="stat-num">8</div>
+        <div class="stat-label">Sectors</div>
       </div>
       <div>
-        <div class="stat-num">3</div>
-        <div class="stat-label">Core Principles</div>
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Awards</div>
       </div>
     </div>
   </div>
@@ -997,10 +1040,16 @@
     <h2 class="section-title fade">Selected projects &amp; <em>case studies.</em></h2>
     <div class="projects">
       <div class="project fade">
-        <div class="project-tag">Experiential · Museum</div>
+        <div class="project-tag">Experiential · Museum &middot; TIME 2024</div>
         <div class="project-title">Museum of Solutions (MuSo)</div>
         <div class="project-sub">JSW Group, Mumbai &mdash; 100,000 sq ft</div>
-        <div class="project-desc">A LEED-certified, ten-storey experiential children's museum designed to foster collaboration, critical thinking, compassion and courage. India's first museum to win the international Hands-On Children-in-Museums (Miffy) award. Co-developed with Ratan J. Batliboi Consultants.</div>
+        <div class="project-desc">A LEED-certified, ten-storey experiential children's museum designed to foster collaboration, critical thinking, compassion and courage. Named to <strong>TIME Magazine's World's Greatest Places of 2024</strong>, and the first Indian museum to win Europe's Hands-On Children-in-Museums (Miffy) award. Co-developed with Ratan J. Batliboi Consultants.</div>
+      </div>
+      <div class="project fade">
+        <div class="project-tag">Hospitality &middot; Bastian Riviera</div>
+        <div class="project-title">The Riviera Collection</div>
+        <div class="project-sub">For Bastian Hospitality &mdash; ongoing</div>
+        <div class="project-desc">An evolving cluster of riverfront hospitality projects for the Bastian group: <em>The Yacht Club at Bastian Riviera</em>, <em>Sir Tuffy &mdash; the Riviera River Boat</em>, the <em>Riviera Pyramid</em>, and the <em>Riverfront Deck &amp; Beach</em>. A landscape, a boat, a pyramid and a deck &mdash; designed as one continuous narrative of water, leisure and theatre.</div>
       </div>
       <div class="project fade">
         <div class="project-tag">Media · Game Design</div>
@@ -1040,7 +1089,7 @@
 <section class="founders-section" id="team">
   <div class="section-inner">
     <div class="section-label fade">The founders</div>
-    <h2 class="section-title fade">Two architects, <em>one studio.</em></h2>
+    <h2 class="section-title fade">Two architects. <em>One studio.</em></h2>
     <div class="founders">
       <div class="founder fade">
         <div class="founder-name">Vinit Nikumbh</div>
@@ -1056,7 +1105,7 @@
       </div>
       <div class="founder fade">
         <div class="founder-name">Ankita Mathapati-Nikumbh</div>
-        <div class="founder-role">Partner &middot; Director</div>
+        <div class="founder-role">Founder &middot; Director</div>
         <p class="founder-bio">
           Graduate of Sir JJ College of Architecture. Over six years of multiplex design with PVR and INOX, with credits on more than a hundred cinemas across India. Lead architect on the Chapora Riverfront Development in Goa and on India's largest data centres for Vodafone and Idea. Calligrapher.
         </p>
@@ -1070,30 +1119,6 @@
   </div>
 </section>
 
-<!-- TEAM -->
-<section class="team-section">
-  <div class="section-inner">
-    <div class="team-list">
-      <div class="team-col fade">
-        <h4>Senior Team</h4>
-        <ul>
-          <li>Prasad Toraskar</li>
-          <li>Samruddhi Kulkarni</li>
-        </ul>
-      </div>
-      <div class="team-col fade">
-        <h4>Design Leads</h4>
-        <ul>
-          <li>Pranav Chaubal</li>
-          <li>Amartya Sonaje</li>
-          <li>Tanay Gosavi</li>
-          <li>Atharva Jadhav</li>
-          <li>Dnyaneshwari Pawar</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- CLIENTS -->
 <section class="clients-section">
@@ -1132,7 +1157,11 @@
     <div class="awards">
       <div class="award fade">
         <div class="award-year">2024</div>
-        <div class="award-name">MuSo &mdash; First Indian museum to win the Hands-On Children-in-Museums (Miffy) Award</div>
+        <div class="award-name"><strong>MuSo named to TIME Magazine's World's Greatest Places of 2024</strong> &mdash; one of only 100 destinations globally, 50 of which were named &quot;Places to Visit&quot;.</div>
+      </div>
+      <div class="award fade">
+        <div class="award-year">2024</div>
+        <div class="award-name">MuSo &mdash; First Indian museum to win Europe's Hands-On! Children-in-Museums (Miffy) Award.</div>
       </div>
       <div class="award fade">
         <div class="award-year">2017</div>
@@ -1158,12 +1187,39 @@
   </div>
 </section>
 
+<!-- GLOBAL RECOGNITION -->
+<section class="global-section">
+  <div class="section-inner">
+    <div class="section-label fade">Global recognition</div>
+    <h2 class="section-title fade">Two of our spaces have travelled <em>far past Mumbai.</em></h2>
+    <div class="global-grid">
+      <div class="global-card fade">
+        <div class="global-headline">TIME &mdash; World's Greatest Places 2024</div>
+        <div class="global-project">Museum of Solutions (MuSo)</div>
+        <p class="global-body">In August 2024, TIME Magazine named MuSo to its annual list of the 100 World's Greatest Places &mdash; one of only a handful of Indian destinations on the list. The museum was recognised in the &ldquo;Places to Visit&rdquo; category for its experiential approach to children's learning.</p>
+      </div>
+      <div class="global-card fade">
+        <div class="global-headline">Hands-On! International Award</div>
+        <div class="global-project">First Indian museum to win</div>
+        <p class="global-body">MuSo is the first Indian museum to receive Europe's Hands-On! Children-in-Museums (Miffy) Award &mdash; the world's most respected recognition for participatory children's museums.</p>
+      </div>
+      <div class="global-card fade">
+        <div class="global-headline">Bastian Riviera</div>
+        <div class="global-project">Hospitality &middot; Riverfront</div>
+        <p class="global-body">Our ongoing work with the Bastian Hospitality group on their Riviera collection &mdash; a yacht club, a river boat, a pyramid pavilion and a riverfront beach &mdash; expands the studio's hospitality practice into Mumbai's most-watched dining and leisure brand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRESS -->
 <section class="press-section">
   <div class="section-inner">
     <div class="section-label fade">Press &amp; publications</div>
     <h2 class="section-title fade">As seen in.</h2>
     <div class="press">
+      <div class="press-item fade">TIME</div>
+      <div class="press-item fade">Harper's Bazaar</div>
       <div class="press-item fade">The Hindu</div>
       <div class="press-item fade">The Times of India</div>
       <div class="press-item fade">Hindustan Times</div>
@@ -1178,8 +1234,6 @@
       <div class="press-item fade">Architecture Live</div>
       <div class="press-item fade">Design Pataki</div>
       <div class="press-item fade">Homegrown</div>
-      <div class="press-item fade">Mid-Day</div>
-      <div class="press-item fade">Free Press Journal</div>
     </div>
   </div>
 </section>
@@ -1196,6 +1250,7 @@
       </div>
       <div class="contact-block fade">
         <h4>Reach us</h4>
+        <a href="mailto:studio@bricolagebombay.com">studio@bricolagebombay.com</a>
         <a href="mailto:vinit@bricolagebombay.com">vinit@bricolagebombay.com</a>
         <a href="https://www.bricolagebombay.com" target="_blank" rel="noopener">bricolagebombay.com</a>
       </div>
