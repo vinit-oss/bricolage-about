@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bricolage Bombay — A Design & Media Practice</title>
+<meta name="description" content="Bricolage Bombay is a Mumbai-based design studio working at the intersections of architecture, design, media, and gaming. Founded 2017." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --red: #C8102E;
+    --red-deep: #A00C24;
+    --ink: #1a1a1a;
+    --ink-soft: #2d2d2d;
+    --grey: #6b7280;
+    --grey-soft: #9ca3af;
+    --line: #e5e5e5;
+    --paper: #faf9f7;
+    --white: #ffffff;
+    --dot: #d8d6d2;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    --mono: 'Space Mono', 'Courier New', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.55;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* dot pattern bg used in brand */
+  .dotgrid {
+    background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  /* ── NAV ────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    padding: 18px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(250, 249, 247, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 100;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-mark {
+    width: 38px; height: 38px;
+    background: var(--red);
+    border-radius: 50%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: white;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.1;
+    font-family: var(--sans);
+  }
+  .nav-links {
+    display: flex; gap: 32px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .nav-links a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--red); }
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--red);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover::after { width: 100%; }
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+  }
+
+  /* ── HERO ────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    padding: 140px 40px 80px;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative;
+    background: var(--paper);
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+    background-size: 22px 22px;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 1300px; margin: 0 auto; width: 100%; position: relative; z-index: 2; }
+  .hero-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .hero-meta::before {
+    content: ''; display: inline-block;
+    width: 32px; height: 1px; background: var(--red);
+  }
+  .hero h1 {
+    font-family: var(--sans);
+    font-size: clamp(48px, 8vw, 124px);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    margin-bottom: 36px;
+  }
+  .hero h1 .accent {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--red);
+    letter-spacing: -0.01em;
+  }
+  .hero-lead {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.4vw, 30px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink-soft);
+    max-width: 780px;
+    line-height: 1.4;
+    margin-bottom: 60px;
+  }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 36px;
+    padding-top: 36px;
+    border-top: 1px solid var(--line);
+    max-width: 900px;
+  }
+  .stat-num {
+    font-family: var(--sans);
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 300;
+    color: var(--red);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-top: 10px;
+  }
+  @media (max-width: 700px) {
+    .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    .hero { padding: 110px 20px 60px; }
+  }
+
+  /* ── SECTIONS ────────────────────────── */
+  section {
+    padding: 120px 40px;
+    position: relative;
+  }
+  .section-inner { max-width: 1300px; margin: 0 auto; }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--red);
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 30px;
+  }
+  .section-label::before {
+    content: ''; width: 28px; height: 1px; background: var(--red);
+  }
+  .section-title {
+    font-family: var(--sans);
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 30px;
+    max-width: 1000px;
+  }
+  .section-title em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--red);
+  }
+  .section-lead {
+    font-size: 19px;
+    color: var(--ink-soft);
+    max-width: 720px;
+    line-height: 1.65;
+    margin-bottom: 60px;
+  }
+  @media (max-width: 768px) { section { padding: 80px 20px; } }
+
+  /* ── DEFINITION (etymology) ──────────── */
+  .definition {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 120px 40px;
+  }
+  .definition-inner {
+    max-width: 980px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .definition-word {
+    font-family: var(--serif);
+    font-size: clamp(48px, 7vw, 96px);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--red);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .definition-body {
+    font-family: var(--serif);
+  }
+  .definition-phonetic {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--grey-soft);
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+  }
+  .definition-type {
+    font-size: 13px;
+    font-family: var(--sans);
+    color: var(--grey-soft);
+    font-style: italic;
+    margin-bottom: 24px;
+    text-transform: lowercase;
+    letter-spacing: 0.04em;
+  }
+  .definition-meaning {
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--paper);
+    margin-bottom: 20px;
+  }
+  .definition-example {
+    font-size: 16px;
+    color: var(--grey-soft);
+    font-style: italic;
+    border-left: 2px solid var(--red);
+    padding-left: 18px;
+    line-height: 1.55;
+  }
+  .definition-source {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-top: 24px;
+  }
+  @media (max-width: 768px) {
+    .definition-inner { grid-template-columns: 1fr; gap: 30px; }
+    .definition { padding: 80px 20px; }
+  }
+
+  /* ── WHAT WE DO ────────────────────── */
+  .verticals {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-top: 20px;
+  }
+  .vertical {
+    background: var(--paper);
+    padding: 44px 38px;
+    transition: background 0.3s;
+  }
+  .vertical:hover { background: var(--white); }
+  .vertical-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--red);
+    margin-bottom: 26px;
+  }
+  .vertical-title {
+    font-family: var(--sans);
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .vertical-desc {
+    font-size: 15px;
+    color: var(--grey);
+    line-height: 1.65;
+    margin-bottom: 22px;
+  }
+  .vertical-list {
+    list-style: none;
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+  }
+  .vertical-list li {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 5px 0;
+  }
+  @media (max-width: 900px) {
+    .verticals { grid-template-columns: 1fr; }
+  }
+
+  /* ── PRINCIPLES ──────────────────────── */
+  .principles-section { background: var(--white); }
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    margin-top: 40px;
+  }
+  .principle-num {
+    font-family: var(--serif);
+    font-size: 80px;
+    font-style: italic;
+    color: var(--red);
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 16px;
+    letter-spacing: -0.04em;
+  }
+  .principle-title {
+    font-family: var(--sans);
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+  .principle-text {
+    color: var(--grey);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+  @media (max-width: 800px) {
+    .principles { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ── PROCESS ───────────────────────── */
+  .process-section { background: var(--paper); }
+  .process {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+    counter-reset: pstep;
+  }
+  .step {
+    padding: 30px 24px;
+    border-top: 2px solid var(--red);
+    background: var(--white);
+  }
+  .step-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--red);
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
+  }
+  .step-title {
+    font-family: var(--sans);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .step-text {
+    font-size: 13px;
+    color: var(--grey);
+    line-height: 1.55;
+  }
+  @media (max-width: 900px) {
+    .process { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 500px) {
+    .process { grid-template-columns: 1fr; }
+  }
+
+  /* ── PROJECTS ─────────────────────── */
+  .projects-section { background: var(--white); }
+  .projects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px 50px;
+    margin-top: 40px;
+  }
+  .project {
+    border-top: 1px solid var(--line);
+    padding-top: 30px;
+  }
+  .project-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .project-title {
+    font-family: var(--sans);
+    font-size: clamp(28px, 3vw, 38px);
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .project-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--red);
+    margin-bottom: 18px;
+  }
+  .project-desc {
+    color: var(--ink-soft);
+    line-height: 1.65;
+    font-size: 15px;
+  }
+  @media (max-width: 800px) {
+    .projects { grid-template-columns: 1fr; gap: 50px; }
+  }
+
+  /* ── PULL QUOTE ────────────────────── */
+  .quote-section {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 140px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .quote-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 22px 22px;
+    opacity: 0.6;
+  }
+  .quote-inner {
+    max-width: 1000px; margin: 0 auto;
+    position: relative; z-index: 2;
+  }
+  .quote-mark {
+    font-family: var(--serif);
+    font-size: 120px;
+    color: var(--red);
+    line-height: 0.5;
+    height: 50px;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  blockquote {
+    font-family: var(--serif);
+    font-size: clamp(26px, 3.6vw, 46px);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--paper);
+    margin-bottom: 36px;
+    letter-spacing: -0.01em;
+  }
+  blockquote em {
+    font-style: normal;
+    color: var(--red);
+    border-bottom: 1px solid var(--red);
+  }
+  .quote-cite {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--grey-soft);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  @media (max-width: 768px) { .quote-section { padding: 80px 20px; } }
+
+  /* ── FOUNDERS ──────────────────────── */
+  .founders-section { background: var(--paper); }
+  .founders {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 40px;
+  }
+  .founder {
+    background: var(--white);
+    padding: 40px 38px;
+    border-top: 3px solid var(--red);
+  }
+  .founder-name {
+    font-family: var(--sans);
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .founder-role {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .founder-bio {
+    color: var(--ink-soft);
+    line-height: 1.65;
+    font-size: 14.5px;
+    margin-bottom: 18px;
+  }
+  .founder-cred {
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--grey);
+    letter-spacing: 0.05em;
+    line-height: 1.7;
+  }
+  @media (max-width: 800px) {
+    .founders { grid-template-columns: 1fr; }
+  }
+
+  /* ── TEAM ──────────────────────────── */
+  .team-section { background: var(--white); padding-top: 0; }
+  .team-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-top: 30px;
+    border-top: 1px solid var(--line);
+    padding-top: 40px;
+  }
+  .team-col h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .team-col ul { list-style: none; }
+  .team-col li {
+    font-family: var(--sans);
+    font-size: 18px;
+    color: var(--ink);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+    font-weight: 400;
+  }
+  @media (max-width: 700px) {
+    .team-list { grid-template-columns: 1fr; gap: 30px; }
+  }
+
+  /* ── CLIENTS ───────────────────────── */
+  .clients-section { background: var(--paper); }
+  .clients {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 40px;
+    border: 1px solid var(--line);
+  }
+  .client {
+    padding: 38px 22px;
+    text-align: center;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--white);
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    letter-spacing: 0.03em;
+    transition: color 0.25s;
+  }
+  .client:hover { color: var(--red); }
+  .client:nth-child(4n) { border-right: none; }
+  @media (max-width: 900px) {
+    .clients { grid-template-columns: repeat(2, 1fr); }
+    .client { border-right: 1px solid var(--line); }
+    .client:nth-child(2n) { border-right: none; }
+  }
+  .collaborators {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid var(--line);
+  }
+  .collab-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 14px;
+  }
+  .collab-list {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  /* ── PRESS ──────────────────────────── */
+  .press-section { background: var(--white); }
+  .press {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .press-item {
+    padding: 22px 0;
+    border-top: 1px solid var(--ink);
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+  }
+  @media (max-width: 700px) {
+    .press { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ── AWARDS ────────────────────────── */
+  .awards-section { background: var(--paper); }
+  .awards {
+    margin-top: 40px;
+  }
+  .award {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 40px;
+    padding: 24px 0;
+    border-top: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .award:last-child { border-bottom: 1px solid var(--line); }
+  .award-year {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--red);
+    letter-spacing: 0.05em;
+    font-weight: 700;
+  }
+  .award-name {
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  /* ── CONTACT ────────────────────────── */
+  .contact-section {
+    background: var(--red);
+    color: var(--white);
+    padding: 130px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 22px 22px;
+    opacity: 0.5;
+  }
+  .contact-inner {
+    max-width: 1300px; margin: 0 auto;
+    position: relative; z-index: 2;
+  }
+  .contact-section .section-label,
+  .contact-section .section-label::before {
+    color: white;
+    background: white;
+  }
+  .contact-section .section-label { color: white; }
+  .contact-title {
+    font-family: var(--sans);
+    font-size: clamp(40px, 6vw, 88px);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: white;
+    margin-bottom: 40px;
+  }
+  .contact-title em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    padding-top: 50px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+  }
+  .contact-block h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    opacity: 0.7;
+  }
+  .contact-block p, .contact-block a {
+    font-family: var(--sans);
+    font-size: 17px;
+    color: white;
+    text-decoration: none;
+    line-height: 1.6;
+    display: block;
+  }
+  .contact-block a:hover { text-decoration: underline; }
+  @media (max-width: 800px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 30px; }
+  }
+
+  /* ── FOOTER ──────────────────────────── */
+  footer {
+    background: var(--ink);
+    color: var(--grey-soft);
+    padding: 40px;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  footer .red { color: var(--red); }
+
+  /* ── FADE IN ANIMATION ──────────────── */
+  .fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .fade.in { opacity: 1; transform: translateY(0); }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-mark">
+      <span>BRI</span><span>COL</span><span>AGE</span>
+    </div>
+    <span>Bricolage Bombay</span>
+  </a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#process">Process</a>
+    <a href="#projects">Projects</a>
+    <a href="#team">Team</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-inner">
+    <div class="hero-meta fade">Mumbai · Est. 2017 · Design &amp; Media Practice</div>
+    <h1 class="fade">
+      A studio at the<br/>
+      <span class="accent">intersections</span><br/>
+      of architecture<br/>
+      &amp; etcetera.
+    </h1>
+    <p class="hero-lead fade">
+      Bricolage Bombay is a design studio committed to exploring architecture and interior design through the act of <em>making</em> &mdash; and the engagement of newer technologies. We work where buildings, drawings, games, cinema and digital experiences meet.
+    </p>
+    <div class="hero-stats fade">
+      <div>
+        <div class="stat-num">2017</div>
+        <div class="stat-label">Founded</div>
+      </div>
+      <div>
+        <div class="stat-num">100k</div>
+        <div class="stat-label">sq ft &mdash; MuSo</div>
+      </div>
+      <div>
+        <div class="stat-num">100+</div>
+        <div class="stat-label">Cinemas Designed</div>
+      </div>
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Core Principles</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEFINITION -->
+<section class="definition">
+  <div class="definition-inner">
+    <div class="definition-word fade">bricolage</div>
+    <div class="definition-body fade">
+      <div class="definition-phonetic">/ˌbrɪkəˈlɑːʒ/</div>
+      <div class="definition-type">noun</div>
+      <div class="definition-meaning">
+        (in art or literature) construction or creation from a diverse range of available things.
+      </div>
+      <div class="definition-example">
+        "the chaotic bricolage of the novel is brought together in a unifying gesture"
+      </div>
+      <div class="definition-source">Source &mdash; Oxford Languages</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE ARE -->
+<section id="who">
+  <div class="section-inner">
+    <div class="section-label fade">Who we are</div>
+    <h2 class="section-title fade">A team of architects, designers and <em>hard-to-label creative instigators.</em></h2>
+    <p class="section-lead fade">
+      Our work is about space, buildings, landscape, art &mdash; and especially the people who inhabit them. We operate at the intersections of architecture, design, media and gaming, fostering a collaborative and interdependent practice that embraces experimentation. The studio looks to create a practice that lies on the boundaries of architecture, design and media.
+    </p>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section id="work" style="padding-top: 40px;">
+  <div class="section-inner">
+    <div class="section-label fade">What we do</div>
+    <h2 class="section-title fade">Three practices, <em>one studio.</em></h2>
+    <div class="verticals fade">
+      <div class="vertical">
+        <div class="vertical-num">001 / Architecture</div>
+        <div class="vertical-title">Buildings &amp; Master Plans</div>
+        <div class="vertical-desc">From private houses to institutional projects, we approach architecture as drawing made physical &mdash; rooted in material, climate and craft.</div>
+        <ul class="vertical-list">
+          <li>Houses</li>
+          <li>Institutional Buildings</li>
+          <li>Mixed-use Buildings</li>
+          <li>Master Planning</li>
+        </ul>
+      </div>
+      <div class="vertical">
+        <div class="vertical-num">002 / Interior</div>
+        <div class="vertical-title">Spaces You Walk Through</div>
+        <div class="vertical-desc">Workspaces, retail, hospitality and cinema interiors &mdash; designed for atmosphere, narrative and the unhurried life of a room.</div>
+        <ul class="vertical-list">
+          <li>Workspaces</li>
+          <li>Retail</li>
+          <li>Hospitality</li>
+          <li>Theatres &amp; Cinemas</li>
+        </ul>
+      </div>
+      <div class="vertical">
+        <div class="vertical-num">003 / Media</div>
+        <div class="vertical-title">Games, Installations, Worlds</div>
+        <div class="vertical-desc">Where space turns digital. Multimedia installations, museum experiences, narrative games &mdash; designed environments that live on screens and stages.</div>
+        <ul class="vertical-list">
+          <li>Installations</li>
+          <li>Multimedia Setups</li>
+          <li>Game Design</li>
+          <li>Experiential / Museum Spaces</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="principles-section">
+  <div class="section-inner">
+    <div class="section-label fade">How we are different</div>
+    <h2 class="section-title fade">Every project is held against <em>three measures.</em></h2>
+    <p class="section-lead fade">We hold our projects to the highest standards. We usually pass them through the following parameters for us to deliver value.</p>
+    <div class="principles">
+      <div class="fade">
+        <div class="principle-num">001</div>
+        <div class="principle-title">Socially Conscious</div>
+        <div class="principle-text">Design that thinks about the people it serves and the wider city it sits inside. Our work is informed by our research on Mumbai, walkability, public space and the politics of the everyday.</div>
+      </div>
+      <div class="fade">
+        <div class="principle-num">002</div>
+        <div class="principle-title">Materially Relevant</div>
+        <div class="principle-text">We favour recycled wood over veneer, lime plaster over texture paint, Indian stone over tile. Small material decisions add up to a smaller chemical footprint &mdash; and a better-looking room.</div>
+      </div>
+      <div class="fade">
+        <div class="principle-num">003</div>
+        <div class="principle-title">Digitally Engaged</div>
+        <div class="principle-text">We use game engines as design tools, VR as a model-making medium, and code as a way of drawing. Architecture today has to be designed for screens as much as for ground.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section" id="process">
+  <div class="section-inner">
+    <div class="section-label fade">Our process</div>
+    <h2 class="section-title fade">Design as process. <em>Process as design.</em></h2>
+    <p class="section-lead fade">
+      Every project unfolds through a thoughtful, evolving sequence &mdash; driven by research, data and collaboration. At each step we unlock new possibilities, keeping the work materially relevant and grounded in reality.
+    </p>
+    <div class="process">
+      <div class="step fade">
+        <div class="step-num">01 / Listen</div>
+        <div class="step-title">Empathise</div>
+        <div class="step-text">Hear the concerns, aspirations and visions of clients and users.</div>
+      </div>
+      <div class="step fade">
+        <div class="step-num">02 / Clarify</div>
+        <div class="step-title">Define</div>
+        <div class="step-text">Frame the brief, the constraints, and the questions worth asking.</div>
+      </div>
+      <div class="step fade">
+        <div class="step-num">03 / Explore</div>
+        <div class="step-title">Ideate</div>
+        <div class="step-text">Sketch, model, write &mdash; in whatever medium serves the idea best.</div>
+      </div>
+      <div class="step fade">
+        <div class="step-num">04 / Build</div>
+        <div class="step-title">Prototype</div>
+        <div class="step-text">Physical models, 3D prints, VR walkthroughs, mock-ups at full scale.</div>
+      </div>
+      <div class="step fade">
+        <div class="step-num">05 / Refine</div>
+        <div class="step-title">Test</div>
+        <div class="step-text">Detail, document, validate. Push the idea back to first principles.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<section class="quote-section">
+  <div class="quote-inner">
+    <div class="quote-mark fade">"</div>
+    <blockquote class="fade">
+      A piece of drawing is architecture. A set of spatial instructions is architecture. A designed cinematic space is architecture. <em>A designed experience inside a video game is architecture.</em>
+    </blockquote>
+    <div class="quote-cite fade">&mdash; Studio Manifesto</div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects-section" id="projects">
+  <div class="section-inner">
+    <div class="section-label fade">Signature work</div>
+    <h2 class="section-title fade">Selected projects &amp; <em>case studies.</em></h2>
+    <div class="projects">
+      <div class="project fade">
+        <div class="project-tag">Experiential · Museum</div>
+        <div class="project-title">Museum of Solutions (MuSo)</div>
+        <div class="project-sub">JSW Group, Mumbai &mdash; 100,000 sq ft</div>
+        <div class="project-desc">A LEED-certified, ten-storey experiential children's museum designed to foster collaboration, critical thinking, compassion and courage. India's first museum to win the international Hands-On Children-in-Museums (Miffy) award. Co-developed with Ratan J. Batliboi Consultants.</div>
+      </div>
+      <div class="project fade">
+        <div class="project-tag">Media · Game Design</div>
+        <div class="project-title">Khirkee 2027</div>
+        <div class="project-sub">KHOJ Collective &mdash; Delhi / London / Mumbai</div>
+        <div class="project-desc">A narrative-driven game set in a dystopian near-future Delhi. The first fully-functional art game built by an Indian design studio. Exhibited at India Art Fair 2017 and the Southbank Centre Alchemy Festival, London. A meditation on identity, migration and gender, played through wandering.</div>
+      </div>
+      <div class="project fade">
+        <div class="project-tag">Hospitality · Sustainable</div>
+        <div class="project-title">Ahvyay Resort</div>
+        <div class="project-sub">11-acre eco-friendly resort</div>
+        <div class="project-desc">A resort built largely from reclaimed materials &mdash; saree-block walls, foraged windows, recycled timber. Designed as a quiet argument for what Indian hospitality can look like when it begins with the scrapyard rather than the catalogue.</div>
+      </div>
+      <div class="project fade">
+        <div class="project-tag">Cinema · Interior</div>
+        <div class="project-title">PVR INOX · Bhilwara &amp; JTM</div>
+        <div class="project-sub">Immersive cinema interiors</div>
+        <div class="project-desc">Art-Deco-led interior design for the country's leading multiplex chains. Part of a longer body of work on cinema spaces &mdash; over a hundred multiplexes designed across India.</div>
+      </div>
+      <div class="project fade">
+        <div class="project-tag">Multimedia · Installation</div>
+        <div class="project-title">Ambedkar in Bombay</div>
+        <div class="project-sub">Columbia Global Centers &times; KRVIA</div>
+        <div class="project-desc">An interactive 3D map of Bombay tracing the geographies of Ambedkar's life &mdash; the maidans, the chawls, the speech sites. Sensor-activated TVs uncovered stories based on visitor choice, making history a thing one walks through rather than reads.</div>
+      </div>
+      <div class="project fade">
+        <div class="project-tag">Research · Drawing</div>
+        <div class="project-title">Reading the Raga</div>
+        <div class="project-sub">Ongoing studio research</div>
+        <div class="project-desc">An ongoing study translating Indian classical music into drawing. Frequencies of ragas are parsed through code generators to produce visual scores &mdash; an investigation, after Xenakis, into why certain ragas belong to certain hours of the day.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDERS -->
+<section class="founders-section" id="team">
+  <div class="section-inner">
+    <div class="section-label fade">The founders</div>
+    <h2 class="section-title fade">Two architects, <em>one studio.</em></h2>
+    <div class="founders">
+      <div class="founder fade">
+        <div class="founder-name">Vinit Nikumbh</div>
+        <div class="founder-role">Founder &middot; Architect</div>
+        <p class="founder-bio">
+          Mumbai-based architect and cinema enthusiast. Winner of the Thesis of the Year Award from the Council of Architecture India and the Ratan Tata Endowment. M.Arch (Architecture &amp; Media) from Cornell University, New York. UDRI research fellow, with published work on Mumbai walkability and pedestrian access.
+        </p>
+        <div class="founder-cred">
+          M.Arch · Cornell University<br/>
+          Registered Architect, COA India<br/>
+          Member, American Institute of Architects
+        </div>
+      </div>
+      <div class="founder fade">
+        <div class="founder-name">Ankita Mathapati-Nikumbh</div>
+        <div class="founder-role">Partner &middot; Director</div>
+        <p class="founder-bio">
+          Graduate of Sir JJ College of Architecture. Over six years of multiplex design with PVR and INOX, with credits on more than a hundred cinemas across India. Lead architect on the Chapora Riverfront Development in Goa and on India's largest data centres for Vodafone and Idea. Calligrapher.
+        </p>
+        <div class="founder-cred">
+          B.Arch · Sir JJ College of Architecture<br/>
+          PVR / INOX · 100+ cinemas<br/>
+          Oberoi · Hiranandani · Phoenix · Brigade
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-section">
+  <div class="section-inner">
+    <div class="team-list">
+      <div class="team-col fade">
+        <h4>Senior Team</h4>
+        <ul>
+          <li>Prasad Toraskar</li>
+          <li>Samruddhi Kulkarni</li>
+        </ul>
+      </div>
+      <div class="team-col fade">
+        <h4>Design Leads</h4>
+        <ul>
+          <li>Pranav Chaubal</li>
+          <li>Amartya Sonaje</li>
+          <li>Tanay Gosavi</li>
+          <li>Atharva Jadhav</li>
+          <li>Dnyaneshwari Pawar</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="clients-section">
+  <div class="section-inner">
+    <div class="section-label fade">Clientele</div>
+    <h2 class="section-title fade">Trusted by <em>private clients, NGOs &amp; governments.</em></h2>
+    <p class="section-lead fade">
+      Clients who share our vision for creating a better-built environment using an innovative and collaborative approach are welcome here.
+    </p>
+    <div class="clients fade">
+      <div class="client">JSW Group</div>
+      <div class="client">PVR INOX</div>
+      <div class="client">ISKCON</div>
+      <div class="client">Lodha Developers</div>
+      <div class="client">BanyanTree</div>
+      <div class="client">Solis Law</div>
+      <div class="client">Oyster</div>
+      <div class="client">KT Builders</div>
+      <div class="client">JB Home Store</div>
+      <div class="client">DJ</div>
+      <div class="client">YES Bank</div>
+      <div class="client">SRMD</div>
+    </div>
+    <div class="collaborators fade">
+      <div class="collab-label">Collaborators</div>
+      <div class="collab-list">Munro Acoustics · Immersion X · Eden LEED · KHOJ Collective · Ratan J. Batliboi Consultants · KRVIA · Columbia Global Centers</div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section class="awards-section">
+  <div class="section-inner">
+    <div class="section-label fade">Awards &amp; recognition</div>
+    <h2 class="section-title fade">A short list of <em>good days.</em></h2>
+    <div class="awards">
+      <div class="award fade">
+        <div class="award-year">2024</div>
+        <div class="award-name">MuSo &mdash; First Indian museum to win the Hands-On Children-in-Museums (Miffy) Award</div>
+      </div>
+      <div class="award fade">
+        <div class="award-year">2017</div>
+        <div class="award-name">Khirkee 2027 exhibited at Southbank Centre Alchemy Festival, London &middot; India Art Fair</div>
+      </div>
+      <div class="award fade">
+        <div class="award-year">2014</div>
+        <div class="award-name">KHOJ International Artists' Residency &mdash; awarded to explore digital media</div>
+      </div>
+      <div class="award fade">
+        <div class="award-year">2010</div>
+        <div class="award-name">AIA New York &mdash; Jugaad Urbanism Exhibition &middot; UDRI Fellowship &middot; Young Urban Leader</div>
+      </div>
+      <div class="award fade">
+        <div class="award-year">2008</div>
+        <div class="award-name">Transparence Design Competition &mdash; National Winner &middot; Best Design Dissertation &mdash; National Winner &middot; Bus Stop Design Build &mdash; Second Prize</div>
+      </div>
+      <div class="award fade">
+        <div class="award-year">2006</div>
+        <div class="award-name">Zero Carbon City Competition &mdash; Third Prize, British Council</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS -->
+<section class="press-section">
+  <div class="section-inner">
+    <div class="section-label fade">Press &amp; publications</div>
+    <h2 class="section-title fade">As seen in.</h2>
+    <div class="press">
+      <div class="press-item fade">The Hindu</div>
+      <div class="press-item fade">The Times of India</div>
+      <div class="press-item fade">Hindustan Times</div>
+      <div class="press-item fade">Indian Express</div>
+      <div class="press-item fade">Deccan Herald</div>
+      <div class="press-item fade">Mint Lounge</div>
+      <div class="press-item fade">The Economic Times</div>
+      <div class="press-item fade">The Week</div>
+      <div class="press-item fade">Outlook Traveller</div>
+      <div class="press-item fade">Elle Decor India</div>
+      <div class="press-item fade">STIR World</div>
+      <div class="press-item fade">Architecture Live</div>
+      <div class="press-item fade">Design Pataki</div>
+      <div class="press-item fade">Homegrown</div>
+      <div class="press-item fade">Mid-Day</div>
+      <div class="press-item fade">Free Press Journal</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="section-label fade" style="color: rgba(255,255,255,0.8);">Get in touch</div>
+    <h2 class="contact-title fade">Let's <em>build something</em><br/>worth drawing.</h2>
+    <div class="contact-grid">
+      <div class="contact-block fade">
+        <h4>Studio</h4>
+        <p>006/B Highway Rose Society,<br/>Sant Janabai Road,<br/>Vile Parle East,<br/>Mumbai 400057</p>
+      </div>
+      <div class="contact-block fade">
+        <h4>Reach us</h4>
+        <a href="mailto:vinit@bricolagebombay.com">vinit@bricolagebombay.com</a>
+        <a href="https://www.bricolagebombay.com" target="_blank" rel="noopener">bricolagebombay.com</a>
+      </div>
+      <div class="contact-block fade">
+        <h4>Particulars</h4>
+        <p>Bricolage Bombay Design<br/>and Media LLP<br/>GST &mdash; 27AARFB8975C1ZY</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; <span class="red">Bricolage Bombay</span> &middot; Design &amp; Media LLP &middot; Mumbai &middot; Est. 2017
+</footer>
+
+<script>
+  // simple fade in on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
