@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vinit-oss.github.io/bricolage-about/sitemap.xml
